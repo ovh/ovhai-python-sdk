@@ -41,7 +41,7 @@ def _get_kwargs(
 
     json_order: Union[Unset, str] = UNSET
     if not isinstance(order, Unset):
-        json_order = order.value
+        json_order = order.value if order else None
 
     params["order"] = json_order
 

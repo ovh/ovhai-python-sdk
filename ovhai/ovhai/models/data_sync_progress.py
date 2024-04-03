@@ -187,7 +187,10 @@ class DataSyncProgress:
         if isinstance(_app_volume, Unset):
             app_volume = UNSET
         else:
-            app_volume = Volume.from_dict(_app_volume)
+            if _app_volume is not None:
+                app_volume = Volume.from_dict(_app_volume)
+            else:
+                app_volume = None
 
         completed = d.pop("completed", UNSET)
 
@@ -217,14 +220,20 @@ class DataSyncProgress:
         if isinstance(_job_volume, Unset):
             job_volume = UNSET
         else:
-            job_volume = Volume.from_dict(_job_volume)
+            if _job_volume is not None:
+                job_volume = Volume.from_dict(_job_volume)
+            else:
+                job_volume = None
 
         _notebook_volume = d.pop("notebookVolume", UNSET)
         notebook_volume: Union[Unset, Volume]
         if isinstance(_notebook_volume, Unset):
             notebook_volume = UNSET
         else:
-            notebook_volume = Volume.from_dict(_notebook_volume)
+            if _notebook_volume is not None:
+                notebook_volume = Volume.from_dict(_notebook_volume)
+            else:
+                notebook_volume = None
 
         processed = d.pop("processed", UNSET)
 
