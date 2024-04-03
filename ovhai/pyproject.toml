@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "ov-hcloud-ai-solution-client"
+name = "ovhai"
 version = "1.0"
 description = "A client library for accessing OVHcloud AI Solution"
 authors = []
 readme = "README.md"
 packages = [
-    {include = "ov_hcloud_ai_solution_client"},
+    {include = "ovhai"},
 ]
-include = ["CHANGELOG.md", "ov_hcloud_ai_solution_client/py.typed"]
+include = ["CHANGELOG.md", "ovhai/py.typed"]
 
 
 [tool.poetry.dependencies]
