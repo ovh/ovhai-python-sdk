@@ -1,24 +1,31 @@
-# ovhai
-A client library for accessing OVHcloud AI Solution
+# ovhai - OVHcloud's AI Python SDK
 
-## Usage
-First, create a client:
+The `ovhai` library is a Python client that allows developers to easily use the OVHcloud AI API. With this SDK, you can run, manage, automate your notebooks, training and deployments in the cloud using OVHcloud's AI products (AI Notebooks, AI Training, AI Deploy).
 
-```python
-from ovhai import Client
+## Installation
+To install the SDK, run the following command:
 
-client = Client(base_url="https://api.example.com")
+```bash
+pip install ovhai
 ```
 
-If the endpoints you're going to hit require authentication, use `AuthenticatedClient` instead:
+The SDK requires Python 3.8 or higher. For information about how to update your Python version, see the [official Python documentation](https://www.python.org/downloads/).
+
+## Getting started
+
+Once you've installed the AI SDK, you can import it to use OVHcloud's AI products using the API.
+
+You can start by the client creation:
 
 ```python
 from ovhai import AuthenticatedClient
 
-client = AuthenticatedClient(base_url="https://api.example.com", token="SuperSecretToken")
+client = AuthenticatedClient(token="YOUR_AI_TOKEN")
 ```
 
-Now call your endpoint and use your models:
+The token used to create the client can be created via the Control Panel (UI), from the AI Dashboard.
+
+Once your client is defined, you can call an endpoint:
 
 ```python
 from ovhai.models import MyDataModel
@@ -108,17 +115,3 @@ client = Client(
 # Note that base_url needs to be re-set, as would any shared cookies, headers, etc.
 client.set_httpx_client(httpx.Client(base_url="https://api.example.com", proxies="http://localhost:8030"))
 ```
-
-## Building / publishing this package
-This project uses [Poetry](https://python-poetry.org/) to manage dependencies  and packaging.  Here are the basics:
-1. Update the metadata in pyproject.toml (e.g. authors, version)
-1. If you're using a private repository, configure it with Poetry
-    1. `poetry config repositories.<your-repository-name> <url-to-your-repository>`
-    1. `poetry config http-basic.<your-repository-name> <username> <password>`
-1. Publish the client with `poetry publish --build -r <your-repository-name>` or, if for public PyPI, just `poetry publish --build`
-
-If you want to install this client into another project without publishing it (e.g. for development) then:
-1. If that project **is using Poetry**, you can simply do `poetry add <path-to-this-client>` from that project
-1. If that project is not using Poetry:
-    1. Build a wheel with `poetry build -f wheel`
-    1. Install that wheel from the other project `pip install <path-to-wheel>`
