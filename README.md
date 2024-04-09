@@ -30,7 +30,7 @@ Once your client is defined, you can call an endpoint:
 ```python
 from ovhai.models import MyDataModel
 from ovhai.api.my_tag import get_my_data_model
-from ovhai.types import Response
+from ovhai.ovhai_types import Response
 
 with client as client:
     my_data: MyDataModel = get_my_data_model.sync(client=client)
@@ -43,7 +43,7 @@ Or do the same thing with an async version:
 ```python
 from ovhai.models import MyDataModel
 from ovhai.api.my_tag import get_my_data_model
-from ovhai.types import Response
+from ovhai.ovhai_types import Response
 
 async with client as client:
     my_data: MyDataModel = await get_my_data_model.asyncio(client=client)

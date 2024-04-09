@@ -5,7 +5,7 @@ from attrs import field as _attrs_field
 
 from ..models.me_token_kind import MeTokenKind
 from ..models.role import Role
-from ..types import UNSET, Unset
+from ..ovhai_types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.project_quotas import ProjectQuotas

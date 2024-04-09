@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.create_framework import CreateFramework
 from ...models.framework import Framework
-from ...types import Response
+from ...ovhai_types import Response
 
 
 def _get_kwargs(

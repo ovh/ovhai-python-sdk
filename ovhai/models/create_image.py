@@ -5,7 +5,7 @@ from attrs import field as _attrs_field
 
 from ..models.licensing_type import LicensingType
 from ..models.product_type import ProductType
-from ..types import UNSET, Unset
+from ..ovhai_types import UNSET, Unset
 
 T = TypeVar("T", bound="CreateImage")
 

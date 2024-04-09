@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.job import Job
 from ...models.job_spec import JobSpec
-from ...types import Response
+from ...ovhai_types import Response
 
 
 def _get_kwargs(

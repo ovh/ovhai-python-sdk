@@ -7,7 +7,7 @@ from dateutil.parser import isoparse
 
 from ..models.licensing_type import LicensingType
 from ..models.product_type import ProductType
-from ..types import UNSET, Unset
+from ..ovhai_types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.framework import Framework

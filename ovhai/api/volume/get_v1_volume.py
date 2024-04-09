@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.order import Order
 from ...models.volume_list import VolumeList
-from ...types import UNSET, Response, Unset
+from ...ovhai_types import UNSET, Response, Unset
 
 
 def _get_kwargs(

@@ -6,7 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.notebook_backup import NotebookBackup
-from ...types import Response
+from ...ovhai_types import Response
 
 
 def _get_kwargs(

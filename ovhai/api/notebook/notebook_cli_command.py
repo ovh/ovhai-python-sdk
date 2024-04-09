@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.cli_command import CLICommand
 from ...models.notebook_spec import NotebookSpec
-from ...types import Response
+from ...ovhai_types import Response
 
 
 def _get_kwargs(

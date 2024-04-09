@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.data_sync import DataSync
 from ...models.data_sync_spec import DataSyncSpec
-from ...types import Response
+from ...ovhai_types import Response
 
 
 def _get_kwargs(

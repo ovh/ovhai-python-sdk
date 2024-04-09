@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.app import App
 from ...models.app_update_request import AppUpdateRequest
-from ...types import Response
+from ...ovhai_types import Response
 
 
 def _get_kwargs(

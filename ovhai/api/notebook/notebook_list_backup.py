@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.notebook_backup_list import NotebookBackupList
 from ...models.order import Order
-from ...types import UNSET, Response, Unset
+from ...ovhai_types import UNSET, Response, Unset
 
 
 def _get_kwargs(

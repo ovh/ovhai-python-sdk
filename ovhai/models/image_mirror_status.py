@@ -6,7 +6,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.image_mirror_state import ImageMirrorState
-from ..types import UNSET, Unset
+from ..ovhai_types import UNSET, Unset
 
 T = TypeVar("T", bound="ImageMirrorStatus")
 

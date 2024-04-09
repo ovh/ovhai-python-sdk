@@ -6,7 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.update_image_version import UpdateImageVersion
-from ...types import Response
+from ...ovhai_types import Response
 
 
 def _get_kwargs(

@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.create_volume import CreateVolume
 from ...models.user_volume import UserVolume
-from ...types import Response
+from ...ovhai_types import Response
 
 
 def _get_kwargs(

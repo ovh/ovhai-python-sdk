@@ -5,7 +5,7 @@ from attrs import field as _attrs_field
 
 from ..models.store_owner import StoreOwner
 from ..models.store_type import StoreType
-from ..types import UNSET, Unset
+from ..ovhai_types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.credentials import Credentials

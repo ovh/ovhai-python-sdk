@@ -6,7 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.notebook_editor import NotebookEditor
-from ...types import UNSET, Response, Unset
+from ...ovhai_types import UNSET, Response, Unset
 
 
 def _get_kwargs(
