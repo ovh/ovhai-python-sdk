@@ -2,6 +2,10 @@
 
 The `ovhai` library is a Python client that allows developers to easily use the OVHcloud AI API. With this SDK, you can run, manage, automate your notebooks, training and deployments in the cloud using OVHcloud's AI products (AI Notebooks, AI Training, AI Deploy).
 
+## ⚠️ Alpha Warning ⚠️
+
+This package is currently in the alpha phase of development. The APIs and functionality of the package may not be fully tested.
+
 ## Installation
 To install the SDK, run the following command:
 
@@ -20,7 +24,10 @@ You can start by the client creation:
 ```python
 from ovhai import AuthenticatedClient
 
-client = AuthenticatedClient(token="YOUR_AI_TOKEN")
+client = AuthenticatedClient(
+    base_url="https://gra.training.ai.cloud.ovh.net", 
+    token="YOUR_AI_TOKEN",
+)
 ```
 
 The token used to create the client can be created via the Control Panel (UI), from the AI Dashboard.
@@ -28,58 +35,41 @@ The token used to create the client can be created via the Control Panel (UI), f
 Once your client is defined, you can call an endpoint:
 
 ```python
-from ovhai.models import MyDataModel
-from ovhai.api.my_tag import get_my_data_model
+from ovhai.models import Me
 from ovhai.ovhai_types import Response
 
 with client as client:
-    my_data: MyDataModel = get_my_data_model.sync(client=client)
+    res: Me = me.sync(client=client)
+
     # or if you need more info (e.g. status_code)
-    response: Response[MyDataModel] = get_my_data_model.sync_detailed(client=client)
+    response: Response[Me] = me.sync_detailed(client=client)
 ```
 
 Or do the same thing with an async version:
 
 ```python
-from ovhai.models import MyDataModel
-from ovhai.api.my_tag import get_my_data_model
+import asyncio
+from ovhai.models import Me
 from ovhai.ovhai_types import Response
 
-async with client as client:
-    my_data: MyDataModel = await get_my_data_model.asyncio(client=client)
-    response: Response[MyDataModel] = await get_my_data_model.asyncio_detailed(client=client)
+async def main(client):
+    res: Me = await me.asyncio(client=client)
+    response: Response[Me] = await me.asyncio_detailed(client=client)
+    print("res:", res)
+    print("response:", response)
+    
+# Run the main function asynchronously
+asyncio.run(main(client=client))
 ```
 
-By default, when you're calling an HTTPS API it will attempt to verify that SSL is working correctly. Using certificate verification is highly recommended most of the time, but sometimes you may need to authenticate to a server (especially an internal server) using a custom certificate bundle.
+## Things to know
 
-```python
-client = AuthenticatedClient(
-    base_url="https://internal_api.example.com", 
-    token="SuperSecretToken",
-    verify_ssl="/path/to/certificate_bundle.pem",
-)
-```
+Every OVHcloud's AI API endpoint has its dedicated Python module that comes with four functions:
+1. `sync`: Blocking request that returns parsed data (if successful) or `None`
+2. `sync_detailed`: Blocking request that always returns a `Request`, optionally with `parsed` set if the request was successful.
+3. `asyncio`: Like `sync` but async instead of blocking
+4. `asyncio_detailed`: Like `sync_detailed` but async instead of blocking
 
-You can also disable certificate validation altogether, but beware that **this is a security risk**.
-
-```python
-client = AuthenticatedClient(
-    base_url="https://internal_api.example.com", 
-    token="SuperSecretToken", 
-    verify_ssl=False
-)
-```
-
-Things to know:
-1. Every path/method combo becomes a Python module with four functions:
-    1. `sync`: Blocking request that returns parsed data (if successful) or `None`
-    1. `sync_detailed`: Blocking request that always returns a `Request`, optionally with `parsed` set if the request was successful.
-    1. `asyncio`: Like `sync` but async instead of blocking
-    1. `asyncio_detailed`: Like `sync_detailed` but async instead of blocking
-
-1. All path/query params, and bodies become method arguments.
-1. If your endpoint had any tags on it, the first tag will be used as a module name for the function (my_tag above)
-1. Any endpoint which did not have a tag will be in `ovhai.api.default`
 
 ## Advanced customizations
 
@@ -96,7 +86,8 @@ def log_response(response):
     print(f"Response event hook: {request.method} {request.url} - Status {response.status_code}")
 
 client = Client(
-    base_url="https://api.example.com",
+    base_url="https://gra.training.ai.cloud.ovh.net",
+    token="YOUR_AI_TOKEN",
     httpx_args={"event_hooks": {"request": [log_request], "response": [log_response]}},
 )
 
@@ -110,8 +101,8 @@ import httpx
 from ovhai import Client
 
 client = Client(
-    base_url="https://api.example.com",
+    base_url="https://gra.training.ai.cloud.ovh.net",
 )
 # Note that base_url needs to be re-set, as would any shared cookies, headers, etc.
-client.set_httpx_client(httpx.Client(base_url="https://api.example.com", proxies="http://localhost:8030"))
+client.set_httpx_client(httpx.Client(base_url="https://gra.training.ai.cloud.ovh.net", proxies="http://localhost:8030"))
 ```

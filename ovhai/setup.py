@@ -6,7 +6,7 @@ here = pathlib.Path(__file__).parent.resolve()
 
 setup(
     name="ovhai",
-    version="0.1",
+    version="0.1a1",
     description="A client library for accessing OVHcloud's AI Solutions",
     packages=find_packages(),
     python_requires=">=3.8, <4",
