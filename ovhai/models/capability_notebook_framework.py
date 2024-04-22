@@ -17,7 +17,7 @@ class CapabilityNotebookFramework:
         doc_url (Union[Unset, str]): URL toward frameworks documentation Example: https://www.tensorflow.org/api_docs.
         id (Union[Unset, str]): unique framework id Example: tensorflow.
         logo_url (Union[Unset, str]): url toward the logo to illustrate the framework Example:
-            https://storage.gra.cloud.ovh.net/v1/AUTH_811aaa421cdf4cf1b3507d4d2143f461/logo/tensorflow.svg.
+            https://storage.gra.cloud.ovh.net/v1/AUTH_00000000000000000000000000000000/logo/tensorflow.svg.
         name (Union[Unset, str]): Name of the base framework Example: Tensorflow.
         saved_paths (Union[Unset, List[str]]): paths that are saved between start & stop of notebooks Example:
             ['/workspace'].

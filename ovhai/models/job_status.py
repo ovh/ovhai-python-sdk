@@ -27,25 +27,25 @@ class JobStatus:
         external_ip (Union[None, Unset, str]): Job External IP
         finalized_at (Union[None, Unset, datetime.datetime]):
         grpc_address (Union[Unset, str]): Address to reach when you want to access the Job's gRPC services Example:
-            https://1cc98e20-c3f7-4555-ba0c-350524b7b591.job-grpc.gra.ai.cloud.ovh.net.
+            https://00000000-0000-0000-0000-000000000000.job-grpc.gra.ai.cloud.ovh.net.
         history (Union[Unset, List['JobStateHistory']]):
         info (Union[Unset, Info]):
         info_url (Union[Unset, str]): Return the information UI URL about the job Example:
-            https://ui.gra.ai.cloud.ovh.net/job/09b95180-e064-4643-a075-682e57b26036.
+            https://ui.gra.ai.cloud.ovh.net/job/00000000-0000-0000-0000-000000000000.
         initializing_at (Union[None, Unset, datetime.datetime]):
         ip (Union[None, Unset, str]): Job internal IP
         last_transition_date (Union[None, Unset, datetime.datetime]):
         monitoring_url (Union[None, Unset, str]): Return the monitoring/grafana UI URL about the job Example:
-            https://monitoring.gra.ai.cloud.ovh.net/d/gpu?var-job=09b95180-e064-4643-a075-682e57b26036&from=1623229322036.
+            https://monitoring.gra.ai.cloud.ovh.net/d/gpu?var-job=00000000-0000-0000-0000-000000000000&from=0000000000000.
         queued_at (Union[None, Unset, datetime.datetime]):
         ssh_url (Union[None, Unset, str]): Return ssh host and user to connect Example:
-            ssh://1cc98e20-c3f7-4555-ba0c-350524b7b591@gra.ai.cloud.ovh.net.
+            ssh://00000000-0000-0000-0000-000000000000@gra.ai.cloud.ovh.net.
         started_at (Union[None, Unset, datetime.datetime]):
         state (Union[Unset, str]):
         stopped_at (Union[None, Unset, datetime.datetime]):
         timeout_at (Union[None, Unset, datetime.datetime]):
         url (Union[Unset, str]): Job access url Example:
-            https://1cc98e20-c3f7-4555-ba0c-350524b7b591.job.gra.ai.cloud.ovh.net.
+            https://00000000-0000-0000-0000-000000000000.job.gra.ai.cloud.ovh.net.
         volumes (Union[Unset, List['VolumeStatus']]):
     """
 

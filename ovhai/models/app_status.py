@@ -24,19 +24,19 @@ class AppStatus:
         available_replicas (Union[Unset, int]):
         data_sync (Union[Unset, List['DataSync']]):
         grpc_address (Union[Unset, str]): Address to reach when you want to access the App's gRPC services Example:
-            https://1cc98e20-c3f7-4555-ba0c-350524b7b591.app-grpc.gra.ai.cloud.ovh.net.
+            https://00000000-0000-0000-0000-000000000000.app-grpc.gra.ai.cloud.ovh.net.
         history (Union[Unset, List['AppStateHistory']]):
         info (Union[Unset, Info]):
         info_url (Union[Unset, str]): Return the information UI URL about the app Example:
-            https://ui.gra.ai.cloud.ovh.net/app/09b95180-e064-4643-a075-682e57b26036.
+            https://ui.gra.ai.cloud.ovh.net/app/00000000-0000-0000-0000-000000000000.
         internal_service_ip (Union[None, Unset, str]): Internal IP address of the app service
         last_transition_date (Union[None, Unset, datetime.datetime]):
         monitoring_url (Union[None, Unset, str]): Return the monitoring/grafana UI URL about the app Example:
             https://monitoring.gra.ai.cloud.ovh.net/d/app-gpu?var-
-            app=09b95180-e064-4643-a075-682e57b26036&from=1623229322036.
+            app=00000000-0000-0000-0000-000000000000&from=0000000000000.
         state (Union[Unset, str]):
         url (Union[Unset, str]): App access url Example:
-            https://1cc98e20-c3f7-4555-ba0c-350524b7b591.app.gra.ai.cloud.ovh.net.
+            https://00000000-0000-0000-0000-000000000000.app.gra.ai.cloud.ovh.net.
         volumes (Union[Unset, List['VolumeStatus']]):
     """
 

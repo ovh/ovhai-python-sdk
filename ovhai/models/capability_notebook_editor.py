@@ -18,8 +18,7 @@ class CapabilityNotebookEditor:
             https://jupyterlab.readthedocs.io/en/stable/.
         id (Union[Unset, str]): unique editor id Example: jupyterlab.
         incompatible_with (Union[Unset, List[str]]):
-        logo_url (Union[Unset, str]):  url toward the logo to illustrate the editor Example:
-            https://storage.gra.cloud.ovh.net/v1/AUTH_811aaa421cdf4cf1b3507d4d2143f461/logo/jupyter.png.
+        logo_url (Union[Unset, str]):  url toward the logo that illustrates the editor
         name (Union[Unset, str]): Name of the editor Example: JupyterLab.
         probe_path (Union[Unset, str]):
         version (Union[Unset, str]): Current version of the editor Example: 1.0.

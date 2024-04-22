@@ -32,7 +32,7 @@ class NotebookStatus:
         last_stopped_at (Union[None, Unset, datetime.datetime]):
         monitoring_url (Union[None, Unset, str]):
         ssh_url (Union[None, Unset, str]): Return ssh host and user to connect Example:
-            ssh://1cc98e20-c3f7-4555-ba0c-350524b7b591@gra.training.ai.cloud.ovh.net.
+            ssh://00000000-0000-0000-0000-000000000000@gra.training.ai.cloud.ovh.net.
         state (Union[Unset, str]):
         url (Union[Unset, str]):
         volumes (Union[Unset, List['VolumeStatus']]):
