@@ -3,10 +3,12 @@
 # and it lists the copyright holders only.
 
 # Names should be added to this file as one of
-# OVHCLOUD
-# MathieuBsqt <mathieu.busquet@corp.ovh.com>
+# Organization's name
+# Individual's name <submission email address>
+# Individual's name <submission email address> <email2> <emailN>
 # See CONTRIBUTORS for the meaning of multiple email addresses.
 
 # Please keep the list sorted.
 
 OVH SAS
+MathieuBsqt <mathieu.busquet@corp.ovh.com>
