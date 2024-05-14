@@ -1,10 +1,10 @@
 # ovhai - OVHcloud's AI Python SDK
 
-The `ovhai` library is a Python client that allows developers to easily use the OVHcloud AI API. With this SDK, you can run, manage, automate your notebooks, training and deployments in the cloud using OVHcloud's AI products (AI Notebooks, AI Training, AI Deploy).
+The `ovhai` library is a Python client that allows developers to easily use the [OVHcloud AI API](https://gra.training.ai.cloud.ovh.net/#/). With this SDK, you can run, manage, automate your notebooks, training and deployments in the cloud using OVHcloud's AI products (AI Notebooks, AI Training, AI Deploy).
 
 ## ⚠️ Alpha Warning ⚠️
 
-This package is currently in the alpha phase of development. The APIs and functionality of the package may not be fully tested.
+This package is currently in the alpha phase of development. The APIs and functionalities of the package may not be fully tested.
 
 ## Installation
 To install the SDK, run the following command:
@@ -15,9 +15,9 @@ pip install ovhai
 
 The SDK requires Python 3.8 or higher. For information about how to update your Python version, see the [official Python documentation](https://www.python.org/downloads/).
 
-## Getting started
+## Getting started - Example Usage
 
-Once you've installed the AI SDK, you can import it to use OVHcloud's AI products using the API.
+Once you've installed the AI SDK, you can import it to use OVHcloud's AI products using the [API](https://gra.training.ai.cloud.ovh.net/#/).
 
 You can start by the client creation:
 
@@ -30,7 +30,7 @@ client = AuthenticatedClient(
 )
 ```
 
-The token used to create the client can be created via the Control Panel (UI), from the AI Dashboard.
+The token used to create the client can be created via the OVHcloud Control Panel (UI), from the AI Dashboard.
 
 Once your client is defined, you can call an endpoint:
 
@@ -62,9 +62,45 @@ async def main(client):
 asyncio.run(main(client=client))
 ```
 
+In the `ovhai/api` [folder](https://github.com/ovh/ovhai-python-sdk/tree/main/ovhai/api), you will find all the endpoints you can call up. They are grouped by folder according to their purpose (`notebook`, `job`, `app`). 
+
+For example, to launch a notebook, you need to import the `notebook_new` file, located at `/ovhai/api/notebook`. You will also need to import the objects linked to this endpoint, since you will manipulate them (`Notebook` and `NotebookSpec` here). This will allow you to launch your first notebook using the `ovhai` python library, based on your specifications:
+
+```python
+from ovhai import AuthenticatedClient
+from ovhai.api.notebook import notebook_new
+from ovhai.models import NotebookSpec, Notebook
+from ovhai.ovhai_types import Response
+
+client = AuthenticatedClient(
+    base_url="https://gra.training.ai.cloud.ovh.net",
+    token="YOUR_AI_TOKEN",
+)
+
+# Define notebook parameters
+editor_id = "jupyterlab"
+framework_id = "conda"
+framework_version = "conda-py39-cudaDevel11.8-v22-4"
+nb_cpu = 2
+
+# Create the notebook creation request
+notebook_specs = {
+    "env": {"editorId": editor_id, "frameworkId": framework_id, "frameworkVersion": framework_version},
+    "resources": {"cpu": nb_cpu},
+}
+
+with client as client:
+    response: Response[Notebook] = notebook_new.sync_detailed(
+        client=client, body=NotebookSpec.from_dict(notebook_specs)
+    )
+    print(response)
+```
+
+The Response object returned will contain various information, including your notebook UUID.
+
 ## Things to know
 
-Every OVHcloud's AI API endpoint has its dedicated Python module that comes with four functions:
+Every [OVHcloud's AI API](https://gra.training.ai.cloud.ovh.net/#/) endpoint has its dedicated Python module that comes with four functions:
 1. `sync`: Blocking request that returns parsed data (if successful) or `None`
 2. `sync_detailed`: Blocking request that always returns a `Request`, optionally with `parsed` set if the request was successful.
 3. `asyncio`: Like `sync` but async instead of blocking
