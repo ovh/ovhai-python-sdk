@@ -2,7 +2,7 @@ name: Build and Publish Python AI SDK to PyPI
 on:
   push:
     tags:
-      - v*.*.*
+      - v*.*
 
 env:
   PROVIDER: ovh
