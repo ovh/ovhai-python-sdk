@@ -16,6 +16,8 @@ WORKING_DIR     := $(shell pwd)
 OS := $(shell uname)
 EMPTY_TO_AVOID_SED := ""
 
+build:: build_sdks
+build_sdks: build_python
 
 build_python:: PYPI_VERSION := $(shell ovhai get version --language python)
 build_python:: install_plugins tfgen # build the python sdk
