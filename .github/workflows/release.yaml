@@ -2,10 +2,9 @@ name: Build and Publish Python AI SDK to PyPI
 on:
   push:
     tags:
-      - v*.*.*
+      - v*.*
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PROVIDER: ovh
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   PYPI_USERNAME: "__token__"
