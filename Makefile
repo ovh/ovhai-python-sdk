@@ -35,7 +35,7 @@ build_python:: # build the python sdk
         rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
         sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
         rm ./bin/setup.py.bak && \
-        cd ./bin && python3 setup.py build sdist
+        cd ./bin && python3 setup.py build sdist --formats=gztar
 
 cleanup:: # cleans up the temporary directory
 	rm -r $(WORKING_DIR)/bin
