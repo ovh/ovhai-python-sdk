@@ -43,7 +43,7 @@ jobs:
       run: |
         pwd
         ls -la
-        python setup.py sdist
+        python ovhai/setup.py sdist
 
     - name: Check worktree clean
       run: |
