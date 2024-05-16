@@ -46,7 +46,7 @@ jobs:
         python ovhai/setup.py sdist
         pwd
         ls -la dist
-        echo "Packages directory: ${{ github.workspace }}/sdk/python/bin/dist"
+        echo "Packages directory: ${{ github.workspace }}/dist"
     - name: Check worktree clean
       run: |
         git update-index -q --refresh
