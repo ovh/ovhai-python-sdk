@@ -29,8 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Makefile Variables
-        run: |
-          make print_vars
+        run: make print_vars
       - name: Checkout Repo
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # tag=v3.5.3
       - name: Unshallow clone for tags
