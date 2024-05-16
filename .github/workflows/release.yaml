@@ -44,6 +44,10 @@ jobs:
         pwd
         ls -la
         python ovhai/setup.py sdist
+        pwd
+        ls -la sdist
+        pwd
+        ls -la dist
 
     - name: Check worktree clean
       run: |
