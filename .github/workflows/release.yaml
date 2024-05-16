@@ -27,14 +27,11 @@ jobs:
       with:
         python-version: ${{matrix.pythonversion}}
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install --upgrade setuptools
-        pip install wheel twine
-
     - name: Build package
       run: |
+        python -m pip install --upgrade pip
+        pip install setuptools
+        pip install wheel twine
         python -m setup build --outdir dist --src-dir ./ovhai-python-sdk/ovhai/
 
     - name: Publish package to PyPI
