@@ -46,7 +46,7 @@ jobs:
         python ovhai/setup.py sdist
         pwd
         ls -la
-        echo "Packages directory: ${{ github.workspace }}/sdk/python/bin/dist"
+        echo "Packages directory is - Is it different from pwd? ${{ github.workspace }}/sdk/python/bin/dist"
     - name: Check worktree clean
       run: |
         git update-index -q --refresh
