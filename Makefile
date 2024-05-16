@@ -4,7 +4,7 @@ SHELL            := /bin/bash
 PACK             := ovh
 ORG              := ovh
 PROJECT          := github.com/${ORG}/ovhai-python-sdk
-NODE_MODULE_NAME := @pulumi/${PACK}
+NODE_MODULE_NAME := @ovhai/${PACK}
 TF_NAME          := ${PACK}
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
@@ -26,7 +26,6 @@ prepare::
 
 development:: build_sdks install_sdks cleanup # Build SDK for a development environment
 
-# Required for the codegen action that runs in pulumi/pulumi and pulumi/pulumi-terraform-bridge
 build:: build_sdks install_sdks
 only_build:: build
 
