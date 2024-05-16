@@ -4,6 +4,10 @@ on:
     tags:
       - v*.*
 
+permissions:
+  contents: write
+  id-token: write
+  
 env:
   PROVIDER: ovh
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
