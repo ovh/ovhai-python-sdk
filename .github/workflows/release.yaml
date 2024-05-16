@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # tag=v3.5.3
+      # Add a step to print out the contents of the directory
+      - name: List Files
+        run: ls -la
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Setup Python
