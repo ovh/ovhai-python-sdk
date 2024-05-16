@@ -62,7 +62,7 @@ jobs:
       with:
           user: ${{ env.PYPI_USERNAME }}
           password: ${{ env.PYPI_PASSWORD }}
-          packages-dir: ${{ github.workspace }}/dist"
+          packages-dir: /dist"
           skip-existing: true
     strategy:
       fail-fast: true
