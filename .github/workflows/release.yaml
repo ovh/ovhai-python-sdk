@@ -43,7 +43,7 @@ jobs:
       run: |
         pwd
         ls -la
-        python ovhai/setup.py sdist
+        python ovhai/setup.py sdist --dist-dir dist
         pwd
         ls -la
         echo "Packages directory is - Is it different from pwd? ${{ github.workspace }}/sdk/python/bin/dist"
@@ -62,7 +62,7 @@ jobs:
       with:
           user: ${{ env.PYPI_USERNAME }}
           password: ${{ env.PYPI_PASSWORD }}
-          packages-dir: /dist"
+          packages-dir: ovhai/dist"
           skip-existing: true
     strategy:
       fail-fast: true
