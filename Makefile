@@ -9,14 +9,15 @@ PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 VERSION         := $(shell ovhai get version)
 
-TESTPARALLELISM := 4
-
 WORKING_DIR     := $(shell pwd)
 
 OS := $(shell uname)
 EMPTY_TO_AVOID_SED := ""
 
-build:: build_sdks
+PHONY: build_python
+development:: build_sdks install_sdks # Build the provider & SDKs for a development environment
+
+build:: build_sdks install_sdks
 build_sdks: build_python
 
 build_python:: PYPI_VERSION := $(shell ovhai get version --language python)
