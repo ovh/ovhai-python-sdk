@@ -35,7 +35,7 @@ jobs:
 
     - name: Build package
       run: |
-        python setup.py sdist
+        python -m setup build --outdir dist --src-dir ./ovhai-python-sdk/ovhai/
 
     - name: Publish package to PyPI
       run: |
