@@ -20,6 +20,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: List all files
+        run: ls -la
+
+    - name: Unshallow clone for tags
+      run: git fetch --prune --unshallow --tags
+
     - name: Set up Python environment
       uses: actions/setup-python@v2
       with:
@@ -34,12 +40,23 @@ jobs:
       run: |
         python setup.py sdist
 
-    - name: Publish package to PyPI
+    - name: Check worktree clean
       run: |
-        twine upload dist/*
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        git update-index -q --refresh
+        if ! git diff-files --quiet; then
+            >&2 echo "error: working tree is not clean, aborting!"
+            git status
+            git diff
+            exit 1
+        fi
+
+    - name: Publish package to PyPI
+      uses: pypa/gh-action-pypi-publish@b7f401de30cb6434a1e19f805ff006643653240e # tag=v1.8.10
+      with:
+          user: ${{ env.PYPI_USERNAME }}
+          password: ${{ env.PYPI_PASSWORD }}
+          packages-dir: ${{github.workspace}}/sdk/python/bin/dist
+          skip-existing: true
     strategy:
       fail-fast: true
       matrix:
