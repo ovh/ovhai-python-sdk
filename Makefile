@@ -14,14 +14,15 @@ WORKING_DIR     := $(shell pwd)
 OS := $(shell uname)
 EMPTY_TO_AVOID_SED := ""
 
-print_vars:
-	@echo "WORKING_DIR: $(WORKING_DIR)"
-	@echo "OS: $(OS)"
 prepare::
 	@if test -z "${NAME}"; then echo "NAME not set"; exit 1; fi
 	@if test -z "${REPOSITORY}"; then echo "REPOSITORY not set"; exit 1; fi
 
-.PHONY: development build_sdks build_python cleanup
+.PHONY: development build_sdks build_python cleanup print_vars
+
+print_vars:
+	@echo "WORKING_DIR: $(WORKING_DIR)"
+	@echo "OS: $(OS)"
 
 development:: build_sdks install_sdks cleanup # Build SDK for a development environment
 
