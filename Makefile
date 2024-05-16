@@ -4,10 +4,6 @@ SHELL            := /bin/bash
 PACK             := ovh
 ORG              := ovh
 PROJECT          := github.com/${ORG}/ovhai-python-sdk
-NODE_MODULE_NAME := @ovhai/${PACK}
-TF_NAME          := ${PACK}
-PROVIDER_PATH    := provider
-VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 VERSION         := $(shell ovhai get version)
 
@@ -33,8 +29,8 @@ build_sdks:: build_python
 
 build_python:: PYPI_VERSION := $(shell ovhai get version --language python)
 build_python:: # build the python sdk
-	cd sdk/python/ && \
-        cp ../../README.md . && \
+	cd ovhai && \
+        cp ../README.md . && \
         python3 setup.py clean --all 2>/dev/null && \
         rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
         sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PYPI_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
