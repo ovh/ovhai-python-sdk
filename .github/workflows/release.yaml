@@ -65,6 +65,7 @@ jobs:
           password: ${{ env.PYPI_PASSWORD }}
           packages-dir: dist
           skip-existing: true
+          verbose: true
     strategy:
       fail-fast: true
       matrix:
