@@ -59,4 +59,4 @@ jobs:
         language:
           - python
         pythonversion:
-          - "3.x"
+          - "3.8"
