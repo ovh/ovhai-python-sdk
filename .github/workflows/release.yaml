@@ -7,7 +7,7 @@ permissions:
   id-token: write
 
 env:
-  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+  PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD_OVHAI }}
   PYPI_USERNAME: "__token__"
 
 jobs:
