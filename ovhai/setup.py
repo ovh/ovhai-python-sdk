@@ -15,7 +15,7 @@ def readme():
 
 setup(
     name="ovhai",
-    version="0.1a1",
+    version="0.1a2",
     description="A client library for accessing OVHcloud's AI Solutions",
     long_description=readme(),
     long_description_content_type='text/markdown',
