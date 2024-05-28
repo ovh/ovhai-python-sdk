@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ovhai"
-version = "0.1a3"
+version = "0.1a4"
 description = "A client library for accessing OVHcloud's AI Solutions"
 authors = ["Mathieu Busquet <mathieu.busquet@ovhcloud.com>"]
 readme = "README.md"

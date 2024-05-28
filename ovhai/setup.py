@@ -3,21 +3,13 @@ import pathlib
 from setuptools import find_packages, setup
 
 here = pathlib.Path(__file__).parent.resolve()
-
-
-def readme():
-    try:
-        with open('../../README.md', encoding='utf-8') as f:
-            return f.read()
-    except FileNotFoundError:
-        return "ovhai Package - Development Version"
-
+long_description = (here / "../README.md").read_text()
 
 setup(
     name="ovhai",
-    version="0.1a3",
+    version="0.1a4",
     description="A client library for accessing OVHcloud's AI Solutions",
-    long_description=readme(),
+    long_description=long_description,
     long_description_content_type='text/markdown',
     keywords='ovhai ovh AI',
     project_urls={
