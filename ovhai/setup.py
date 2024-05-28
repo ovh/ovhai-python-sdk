@@ -7,7 +7,7 @@ here = pathlib.Path(__file__).parent.resolve()
 
 def readme():
     try:
-        with open('../README.md', encoding='utf-8') as f:
+        with open('../../README.md', encoding='utf-8') as f:
             return f.read()
     except FileNotFoundError:
         return "ovhai Package - Development Version"
@@ -15,7 +15,7 @@ def readme():
 
 setup(
     name="ovhai",
-    version="0.1a2",
+    version="0.1a3",
     description="A client library for accessing OVHcloud's AI Solutions",
     long_description=readme(),
     long_description_content_type='text/markdown',

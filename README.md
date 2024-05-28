@@ -36,13 +36,16 @@ Once your client is defined, you can call an endpoint:
 
 ```python
 from ovhai.models import Me
+from ovhai.api.me import me
 from ovhai.ovhai_types import Response
 
 with client as client:
     res: Me = me.sync(client=client)
-
+    print(res)
+    
     # or if you need more info (e.g. status_code)
-    response: Response[Me] = me.sync_detailed(client=client)
+    #response: Response[Me] = me.sync_detailed(client=client)
+    #print(response)
 ```
 
 Or do the same thing with an async version:
@@ -50,21 +53,24 @@ Or do the same thing with an async version:
 ```python
 import asyncio
 from ovhai.models import Me
+from ovhai.api.me import me
 from ovhai.ovhai_types import Response
 
 async def main(client):
     res: Me = await me.asyncio(client=client)
-    response: Response[Me] = await me.asyncio_detailed(client=client)
-    print("res:", res)
-    print("response:", response)
+    print(res)
+    
+    # or if you need more info (e.g. status_code)
+    #response: Response[Me] = await me.asyncio_detailed(client=client)
+    #print(response)
     
 # Run the main function asynchronously
 asyncio.run(main(client=client))
 ```
 
-In the `ovhai/api` [folder](https://github.com/ovh/ovhai-python-sdk/tree/main/ovhai/api), you will find all the endpoints you can call up. They are grouped by folder according to their purpose (`notebook`, `job`, `app`). 
+In the `ovhai/api` [folder](https://github.com/ovh/ovhai-python-sdk/tree/main/ovhai/api), you will find all the endpoints you can call up. They are grouped by folder according to their purpose (`notebook`, `job`, `app`, `...`). 
 
-For example, to launch a notebook, you need to import the `notebook_new` file, located at `/ovhai/api/notebook`. You will also need to import the objects linked to this endpoint, since you will manipulate them (`Notebook` and `NotebookSpec` here). This will allow you to launch your first notebook using the `ovhai` python library, based on your specifications:
+For example, to launch a notebook, you need to import the [`notebook_new` file](https://github.com/ovh/ovhai-python-sdk/blob/master/ovhai/api/notebook/notebook_new.py), located at `/ovhai/api/notebook`. You will also need to import the objects linked to this endpoint (those mentioned in the python file), since you will manipulate them (`Notebook` and `NotebookSpec` here, in addition to the classic `AuthenticatedClient` and `Response`). This will allow you to launch your first notebook using the `ovhai` python library, based on your specifications:
 
 ```python
 from ovhai import AuthenticatedClient
@@ -106,13 +112,14 @@ Every [OVHcloud's AI API](https://gra.training.ai.cloud.ovh.net/#/) endpoint has
 3. `asyncio`: Like `sync` but async instead of blocking
 4. `asyncio_detailed`: Like `sync_detailed` but async instead of blocking
 
+To implement the call you want, find the folder and then the file corresponding to your needs in the [api folder](https://github.com/ovh/ovhai-python-sdk/tree/master/ovhai/api). Then choose the method that suits you best from the four mentioned above. Then import the objects you need to use this method.
 
 ## Advanced customizations
 
-There are more settings on the generated `Client` class which let you control more runtime behavior, check out the docstring on that class for more info. You can also customize the underlying `httpx.Client` or `httpx.AsyncClient` (depending on your use-case):
+There are more settings on the generated `AuthenticatedClient` class which let you control more runtime behavior, check out the [docstring on that class](https://github.com/ovh/ovhai-python-sdk/blob/master/ovhai/client.py) for more info. You can also customize the underlying `httpx.Client` or `httpx.AsyncClient` (depending on your use-case):
 
 ```python
-from ovhai import Client
+from ovhai import AuthenticatedClient
 
 def log_request(request):
     print(f"Request event hook: {request.method} {request.url} - Waiting for response")
@@ -121,7 +128,7 @@ def log_response(response):
     request = response.request
     print(f"Response event hook: {request.method} {request.url} - Status {response.status_code}")
 
-client = Client(
+client = AuthenticatedClient(
     base_url="https://gra.training.ai.cloud.ovh.net",
     token="YOUR_AI_TOKEN",
     httpx_args={"event_hooks": {"request": [log_request], "response": [log_response]}},
@@ -130,15 +137,6 @@ client = Client(
 # Or get the underlying httpx client to modify directly with client.get_httpx_client() or client.get_async_httpx_client()
 ```
 
-You can even set the httpx client directly, but beware that this will override any existing settings (e.g., base_url):
+For example, the previous code snippet shows how to define a custom request and response event hook using the `httpx_args` parameter of the `AuthenticatedClient` class. The `httpx_args` parameter is used to pass additional arguments to the underlying `httpx.Client` or `httpx.AsyncClient`. In this case, the `event_hooks` argument is used to specify custom functions that will be called before and after each HTTP request and response.
 
-```python
-import httpx
-from ovhai import Client
-
-client = Client(
-    base_url="https://gra.training.ai.cloud.ovh.net",
-)
-# Note that base_url needs to be re-set, as would any shared cookies, headers, etc.
-client.set_httpx_client(httpx.Client(base_url="https://gra.training.ai.cloud.ovh.net", proxies="http://localhost:8030"))
-```
+You can even set the httpx client directly, but beware that this will override any existing settings (e.g., `base_url`).
