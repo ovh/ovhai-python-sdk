@@ -51,7 +51,7 @@ jobs:
           user: ${{ env.PYPI_USERNAME }}
           password: ${{ env.PYPI_PASSWORD }}
           packages-dir: dist
-          skip-existing: false
+          skip-existing: true
           verbose: true
     strategy:
       fail-fast: true
